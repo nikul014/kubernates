@@ -30,17 +30,6 @@ jobs:
       - name: Configure Docker
         run: |
           gcloud auth configure-docker ${{ secrets.GCR_HOSTNAME }}
-      - name: Configure Docker and GCR authentication
-        env:
-          GCR_HOSTNAME: "us-central1-docker.pkg.dev"  # Replace with your GCR hostname
-          GCP_PROJECT: ${{ secrets.GCP_PROJECT }} # Replace with your GCP project ID
-          GCR_SA_KEY: ${{ secrets.GCR_SA_KEY }}
-        run: |
-          echo $GCR_SA_KEY | base64 --decode > /tmp/gcr_key.json
-          docker login -u _json_key --password-stdin https://$GCR_HOSTNAME
-          docker build -t $GCR_HOSTNAME/$GCP_PROJECT/container1:$GITHUB_SHA ./container1
-          docker push $GCR_HOSTNAME/$GCP_PROJECT/container1:$GITHUB_SHA      
-      
 
       - name: Build and push Docker image (Container 1)
         run: |
