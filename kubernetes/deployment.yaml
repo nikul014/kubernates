@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
       - name: container1
-        image: us-central1-docker.pkg.dev/tribal-cortex-428712-n1/container1-image:latest
+        image: us-central1-docker.pkg.dev/tribal-cortex-428712-n1/kubernetes/container1-image:latest
         volumeMounts:
           - mountPath: /home/nikulpokukadiya1998
             name: kubernetes-volume-1
       - name: container2
-        image: us-central1-docker.pkg.dev/tribal-cortex-428712-n1/container2-image:latest
+        image: us-central1-docker.pkg.dev/tribal-cortex-428712-n1/kubernetes/container2-image:latest
         volumeMounts:
           - mountPath: /home/nikulpokukadiya1998
             name: kubernetes-volume-1
