@@ -33,12 +33,12 @@ jobs:
 
       - name: Build and push Docker image (Container 1)
         run: |
-          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container1:$GITHUB_SHA ./container1
+          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container1:$GITHUB_SHA .
           docker push ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container1:$GITHUB_SHA
 
       - name: Build and push Docker image (Container 2)
         run: |
-          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA ./container2
+          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA .
           docker push ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA
 
       - name: Get GKE credentials
