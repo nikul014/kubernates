@@ -1,0 +1,41 @@
+services:
+  container1:
+    container_name: container1
+    image: nikulpokukadiya1998/container1:latest
+    ports:
+      - "6000:6000"
+    volumes:
+      - .:/app/files
+    depends_on:
+      - container2
+
+  container2:
+    container_name: container2
+    image: nikulpokukadiya1998/container2:latest
+    ports:
+      - "6001:6001"
+    volumes:
+      - .:/app/files
+#
+#
+#version: '3.8'
+#
+#services:
+#  container1:
+#    build:
+#      context: ./container1
+#    ports:
+#      - "6000:6000"
+#    volumes:
+#      - .:/app/files
+#    depends_on:
+#      - container2
+#
+#  container2:
+#    build:
+#      context: ./container2
+#    ports:
+#      - "6001:6001"
+#    volumes:
+#      - .:/app/filesGrou
+#

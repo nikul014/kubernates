@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-deployment
+  namespace: default
+  labels:
+    app: microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice-deployment
+  template:
+    metadata:
+      labels:
+        app: microservice-deployment
+    spec:
+      containers:
+      - name: container1
+        image: us-central1-docker.pkg.dev/tribal-cortex-428712-n1/kubernetes-assignment/container1-image:latest
+        volumeMounts:
+          - mountPath: /home/nikulpokukadiya1998
+            name: kubernetes-volume-1
+      - name: container2
+        image: us-central1-docker.pkg.dev/tribal-cortex-428712-n1/kubernetes-assignment/container2-image:latest
+        volumeMounts:
+          - mountPath: /home/nikulpokukadiya1998
+            name: kubernetes-volume-1
+      volumes:
+        - name: kubernetes-volume-1
+          persistentVolumeClaim:
+            claimName: kubernetes-volume-claim-1

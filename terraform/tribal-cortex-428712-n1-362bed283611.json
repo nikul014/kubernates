@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tribal-cortex-428712-n1",
+  "private_key_id": "362bed283611ccd91ba5bf4460dfda01e10eba9f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7jRBq4DD8nEaK\nvDnXkuCF6BrE1+8AphjibAidITKxsLkZqa7S6Ax7BYiTbltxnbl4tdfbWjtLsHqb\nbTAIRjoBRG4/tBclo8cDwSNDesnXrXq8YMVTjqlZzEOPQoI5RENze8RwL84ndd5w\nNKIl/8yRXrj0y5yirXdqL/HCK96YkYNy/9iC72bMibVj58mXHz2/c58aA7cR93gw\nIfIcgdyqp88qaEE10eSvEffcHV3d/rJ1zCXHyBX8FMMq2XqeakHWC6LDEDL8WVEM\nssdsUpi0l+PKVo7T2VFRfWkyP8RXwcgtqgtvtJ/RKoXAQm5FrhFjunEcXHXOwbaM\nEhyiXcRlAgMBAAECggEALk+lJerhlcLmBVR4qPNW9yHK2F/kn6GkA+b+0oPzz14u\nurhEV8ZebJM/d/44XMwAVB784+h6O1Si1dXGlkh3AsCZw6etzojMN/BdS4iapiPr\nanAv0ZPo2+hdJ1caLlddm3rMlRIs4uAPUuAgSOdK5XuBCstrTF0unz0jApoQD1Z0\n0KPQ8I/yNBBQmRsE1xXZGCfyKiwC0623hEuirrd1qPF9YCg5gyJFnuErZLzqeGeN\n+/GSIZquHD6OA4gPrmDusPgYh6bD+1LvFqW+ZUeHxF6Kk13a/eHC5nXwJ6FkgjAh\nQBghLE8Q8F3b7PuqkucQ8pCOo8zDbAYLM6FlLvrRIQKBgQDk4+R6+Z6EILqG/Bk6\nd2pROg111JRnpaCmYVMLfPKYAUx9NvIpXKKd/d+oQiBvlxIpb1OtSiqYuOaNyrCI\nTd6ZkskoTe+QHUoQVuhIf86gwWNyVdAQGNKWhL32dEqVTykByUeRHh9yVFhNlK/6\n+CppLm3MBtG/GkSm4bEaFUzJYQKBgQDRw71YkjA99dTfqICG96QvKfFp3xnQlbvP\nmM57ZPdzw90Sr/BdqUd/2E8kKsb80V3Fi8l35AdJFWea09VitDKP0cqGQ0KlSEh3\n+kF006wlGZTi8cOWZ4UhI6tsT3WHDxKVrEoQewSDmN01jv21We4jpOyiW4o2PWCm\nbL/TcnJFhQKBgQCPGmQo9pPCq+uypT7orOxNqGvt9WBrhMPyAfs3vYC2xGkcCBRT\nA9WvzZ/dxKoe2mbCfRXly+7h2QhcMhM4xOadQYZ+qmtSwN0jZhKH8VAwdXhFbZ1N\n0xcmgAt8YKyYuQs8UKlr81dZ1Z33szRrRmjNpfeDjefpAPVXGNfvJM4DQQKBgBt+\nenz3fFdCt4oxPddy8hQ0fS4RTgLm/VzyfG30B/Mmgv2GDg1YuMRrB8SHztkoYBAa\niGesfb/4jEHg7iEn2VC8gL0kZ8HePZFsPdQgQnoCZl9wrOAz5WE4malyqMbxFNCF\napfKaAcPrD7u5RY2GV6WqWWGdhEx7k8iBeqjH5M5AoGAIqDarHMCq3+3cR9j9Nzr\nRv14OwjFN0LQNOeVKuZwajS6BcxIp1za5i64wL70XnERUwR1+e7nJhblCMBbGEOj\n7CuwfqppHZ83gLZ8E9EoZb2rpEzZ+XfP69e0L5kewH95KqR6GyY6JvWEGyXbrf2J\nIwNt2If4N5dJWPgta3RTsd4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "kubers@tribal-cortex-428712-n1.iam.gserviceaccount.com",
+  "client_id": "108457157966743025281",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kubers%40tribal-cortex-428712-n1.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
