@@ -5,18 +5,34 @@ on:
     branches:
       - main
 
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GAR_LOCATION: us-central1
+  GKE_CLUSTER: gke-cluster
+  GKE_ZONE: us-central1-a
+  DEPLOYMENT_NAME: gke-test
+  REPOSITORY: kubernetes
+  IMAGE: container1
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
 
-      - name: Authenticate to Google Cloud
+      - id: 'auth'
+        name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GKE_CREDENTIALS }}
@@ -28,18 +44,31 @@ jobs:
           install_components: 'kubectl'
 
       - name: Configure Docker
-        run: |
-          gcloud auth configure-docker ${{ secrets.GCR_HOSTNAME }}
+        run: |-
+          echo ${{steps.auth.outputs.access_token}} | docker login -u oauth2accesstoken --password-stdin https://$GAR_LOCATION-docker.pkg.dev
+          # Get the GKE credentials so we can deploy to the cluster
+          - name: Set up GKE credentials
+          uses: google-github-actions/get-gke-credentials@v0
+          with:
+          cluster_name: ${{ secrets.GKE_CLUSTER }}
+          location: ${{ secrets.GKE_ZONE }}
 
       - name: Build and push Docker image (Container 1)
         run: |
-          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container1:$GITHUB_SHA .
-          docker push ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container1:$GITHUB_SHA
+          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/kubernetes/container1:$GITHUB_SHA  \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          .
 
-      - name: Build and push Docker image (Container 2)
-        run: |
-          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA .
-          docker push ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA
+      # Push the Docker image to Google Artifact Registry
+      - name: Publish
+        run: |-     
+          docker push ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/kubernetes/container1:$GITHUB_SHA
+
+#      - name: Build and push Docker image (Container 2)
+#        run: |
+#          docker build -t ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA ./container2
+#          docker push ${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA
 
       - name: Get GKE credentials
         run: |
@@ -47,5 +76,5 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          kubectl set image deployment/container1 container1=${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container1:$GITHUB_SHA
-          kubectl set image deployment/container2 container2=${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA
+          kubectl set image deployment/container1 container1=${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/kubernetes/container1:$GITHUB_SHA
+#          kubectl set image deployment/container2 container2=${{ secrets.GCR_HOSTNAME }}/${{ secrets.GCP_PROJECT }}/container2:$GITHUB_SHA
